@@ -924,7 +924,7 @@ a:hover {
 }
 
 .bg-info {
-  /* background-color: #1bbc9b !important; */
+  background-color: #1bbc9b !important;
   background-image: url("../public/farmer1.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -1088,8 +1088,19 @@ a:hover {
 }
 
 .card {
-  border: 10px solid #9c2d2d;
+  /* border: 10px solid #9c2d2d; */
   margin-bottom: 1rem;
+  background-color: #ccae62;
+  padding: 40px;
+  border-radius: 25px;
+}
+
+.bg-signup {
+  background-image: url("../public/farmer2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
 }
 
 .card .card-header {
@@ -1106,15 +1117,6 @@ a:hover {
   border-top: 1px solid red;
   padding: 0.375rem;
 }
-
-/* .card-footer {
-  border-top: 1px solid #1a1a1a;
-  padding: 0.375rem;
-  clear: both;
-  position: relative;
-  height: 200px;
-  margin-top: -200px;
-} */
 
 
 .card.card-rounded {
@@ -1719,4 +1721,18 @@ label form [type='radio'] {
   .align-content-center-xl {
     align-content: center;
   }
+
+  /* .ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 2000ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open{
+    opacity: 0.99;
+}
+
+.ReactModal__Overlay--after-close{
+    opacity: 0.99;
+    transition: opacity 2000ms ease-in-out;
+} */
 }

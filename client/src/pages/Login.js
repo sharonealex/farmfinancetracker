@@ -1,20 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+const Login = () =>{
+    const [formState, setFormState] = useState({ email: '', password: '' });
 
 
-
-
-const SignUp = () => {
-  const [formState, setFormState] = useState({
-    name: '',
-    email: '',
-    password: '',
-  });
- 
-
-  // update state based on form input changes
-  const handleChange = (event) => {
+const handleChange = (event) => {
     const { name, value } = event.target;
 
     setFormState({
@@ -23,19 +14,31 @@ const SignUp = () => {
     });
   };
 
-  // submit form
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
+    try {
+     
 
-  
-  };
+     
+    } catch (e) {
+      console.error(e);
+    }
+
+    // clear form values
+    setFormState({
+      email: '',
+      password: '',
+    });
+  };  
+
 
   return (
-    <main className="bg-signup text-dark mb-4 py-3 display-flex  min-100-vh">
-     <div className="col-12 col-lg-5">
-     <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Join our farmers!</h4>
+    <main className="flex-row justify-center mb-4">
+      <div className="col-12 col-lg-10">
+        <div className="card">
+          <h4 className="card-header bg-dark text-light p-2">Login</h4>
           <div className="card-body">
             {false ? (
               <p>
@@ -44,14 +47,7 @@ const SignUp = () => {
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="Your username"
-                  name="name"
-                  type="text"
-                  value={formState.name}
-                  onChange={handleChange}
-                />
+                <p>Not having account? <Link className="text-light" to="Signup">SignUp</Link></p>
                 <input
                   className="form-input"
                   placeholder="Your email"
@@ -68,14 +64,6 @@ const SignUp = () => {
                   value={formState.password}
                   onChange={handleChange}
                 />
-                 <input
-                  className="form-input"
-                  placeholder="Your skills    plantation, crop rotation.."
-                  name="skills"
-                  type="text"
-                  value={formState.skills}
-                  onChange={handleChange}
-                />
                 <button
                   className="btn btn-block btn-info"
                   style={{ cursor: 'pointer' }}
@@ -86,12 +74,13 @@ const SignUp = () => {
               </form>
             )}
 
-            
+           
           </div>
-          </div>
-     </div>
+        </div>
+      </div>
     </main>
   );
-};
 
-export default SignUp;
+}
+
+export default Login;
