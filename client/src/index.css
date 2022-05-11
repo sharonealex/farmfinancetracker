@@ -924,7 +924,7 @@ a:hover {
 }
 
 .bg-info {
-  background-color: #1bbc9b !important;
+  /* background-color: #1bbc9b !important; */
   background-image: url("../public/farmer1.png");
   background-repeat: no-repeat;
   background-size: cover;
