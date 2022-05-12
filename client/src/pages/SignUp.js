@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { addUser } from '../utils/api';
 
-
+import Auth from '../utils/auth';
 
 
 
@@ -35,7 +35,8 @@ const SignUp = () => {
         throw new Error('something went wrong!');
       }
 
-      const user = await res.json();
+      const {token, user} = await res.json();
+      Auth.login(token);
       console.log(user, "user from db back");
      // history.push(`/matchup/${matchup._id}`);
     } catch (err) {

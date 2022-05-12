@@ -1,16 +1,12 @@
 const {Model, DataTypes} = require("sequelize");
 const sequelize = require("../config/connection");
+const bcrypt = require('bcrypt');
 
 class Farmer extends Model {};
 
 Farmer.init(
     {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true
-        },
+       
         name: {
             type: DataTypes.STRING,
             allowNull: false
@@ -33,4 +29,19 @@ Farmer.init(
     }
 );
 
+Farmer.beforeCreate(async (user, options) => {
+    if(user.isNewRecord || user.changed){
+        const saltRounds = 10;
+        user.password = await bcrypt.hash(user.password, saltRounds);
+    }
+  });
+
+Farmer.prototype.isCorrectPassword = async function(password){
+    console.log('verifying password...');
+    return bcrypt.compare(password, user.password);
+
+}
+
 module.exports = Farmer;
+
+
