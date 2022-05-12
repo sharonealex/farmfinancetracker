@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { addUser } from '../utils/api';
 
 
 
@@ -27,9 +28,23 @@ const SignUp = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
+    try {
+      const res = await addUser(formState);
+
+      if (!res.ok) {
+        throw new Error('something went wrong!');
+      }
+
+      const user = await res.json();
+      console.log(user, "user from db back");
+     // history.push(`/matchup/${matchup._id}`);
+    } catch (err) {
+      console.error(err);
+    }
+
+  };
 
   
-  };
 
   return (
     <main className="bg-signup text-dark mb-4 py-3 display-flex  min-100-vh">
@@ -95,3 +110,4 @@ const SignUp = () => {
 };
 
 export default SignUp;
+
