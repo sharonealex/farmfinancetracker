@@ -3,10 +3,25 @@ import { Link } from "react-router-dom";
 //mport { clockHours } from '../utils/api';
 
 const ClockHours = () => {
-  const d = new Date();
 
-  const [clockIn, setClockIn] = useState(false);
-  const clockOut = () => {};
+  const date = new Date();
+
+  const [startTime, setStartTime] = useState("00:00");
+  const [finishTime, setFinishTime] = useState("00:00");
+  const [startMessage, setStartMessage] = useState("");
+  const [finishMessage, setFinishMessage] = useState("");
+
+  const handleClickIn = ()=>{
+    setStartTime(date.getHours().toString());
+    console.log(`starting hours: ${startTime}`);
+    setStartMessage(`you have clocked in at ${startTime}:00 hours, Thank you!`)
+  };
+
+  const handleClickOut = ()=>{
+    setFinishTime(date.getHours().toString());
+    console.log(`finishing hours: ${finishTime}`);
+    setFinishMessage(`you have clocked out at ${finishTime}:00 hours, Thank you!`)
+  }
 
   return (
     <main className="clockhours bg-clockhours flex-row justify-center mb-4">
@@ -15,24 +30,26 @@ const ClockHours = () => {
           <h1>Good Day, Thoms</h1>
           <p>
             Time Now:{" "}
-            {d.getDate() +
+            {date.getDate() +
               "/" +
-              d.getMonth() +
+              date.getMonth() +
               "/" +
-              d.getFullYear() +
+              date.getFullYear() +
               " " +
-              d.getHours() +
+              date.getHours() +
               ":" +
-              d.getMinutes()}
+              date.getMinutes()}
           </p>
           <div className="usr-img"></div>
           <div className="flex-row">
-          <button className="btn btn-lg btn-dark m-2" onClick={clockOut}>
+          <button className="btn btn-lg btn-dark m-2" onClick={handleClickIn}>
             Clock In
           </button>
-          <button className="btn btn-lg btn-dark m-2" onClick={clockOut}>
+          <p>{startMessage}</p>
+          <button className="btn btn-lg btn-dark m-2" onClick={handleClickOut}>
             Clock Out
           </button>
+          <p>{finishMessage}</p>
           </div>
         </div>
       </div>
