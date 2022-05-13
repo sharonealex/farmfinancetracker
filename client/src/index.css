@@ -1095,8 +1095,36 @@ a:hover {
   border-radius: 25px;
 }
 
+.punch-card {
+  margin-bottom: 1rem;
+  background-color: #ccae62;
+  padding: 4px;
+  width: 100vh;
+  height: 100%;
+}
+
+.usr-img {
+  background-image: url("../public/farmerimg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100px;
+  width: 100px;
+}
+
 .bg-signup {
   background-image: url("../public/farmer2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+.clockhours {
+  height: 600px;
+  width: 800px;
+}
+
+.bg-clockhours {
+  background-image: url("../public/farmer3.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;

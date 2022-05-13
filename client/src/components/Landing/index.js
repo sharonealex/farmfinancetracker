@@ -4,8 +4,14 @@ import { Link } from "react-router-dom";
 import SignUp from "../../pages/SignUp";
 import Login from "../../pages/Login";
 
+import Auth from '../../utils/auth';
+
 const Landing = () => {
   
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
 
   const [modalIsOpen, setIsOpen] = useState(false);
   
@@ -44,17 +50,21 @@ const Landing = () => {
 
         <div className="container flex-row text-center justify-center">
           <div>
-            <button className="btn btn-lg btn-dark m-2" onClick={openModal}>
-              Get Started
-            </button>
-            <Modal
-              isOpen={modalIsOpen}
-              style={customStyles}
-              onRequestClose={closeModal}
-            >
-              <button onClick={closeModal}>x</button>
-              <Login />
-            </Modal>
+            {Auth.loggedIn()?( <><button className="btn btn-lg btn-dark m-2" onClick={logout}>
+              Logout
+            </button><button className="btn btn-lg btn-dark m-2">
+                 <Link to="/clockHours">Punch Clock</Link>
+              </button></>):(<><button className="btn btn-lg btn-dark m-2" onClick={openModal}>
+                Get Started
+              </button><Modal
+                isOpen={modalIsOpen}
+                style={customStyles}
+                onRequestClose={closeModal}
+              >
+                  <button onClick={closeModal}>x</button>
+                  <Login />
+                </Modal></>)}
+           
           </div>
 
       

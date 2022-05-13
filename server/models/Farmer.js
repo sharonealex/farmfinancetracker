@@ -6,7 +6,6 @@ class Farmer extends Model {};
 
 Farmer.init(
     {
-       
         name: {
             type: DataTypes.STRING,
             allowNull: false
@@ -26,6 +25,12 @@ Farmer.init(
         freezeTableName: true,
         underscored: true,
         modelName: 'farmer',
+    },{
+        instanceMethods: {
+            checkPassword: (password) => {
+                return bcrypt.compareSync(password, this.password);
+            }
+    }
     }
 );
 
@@ -36,11 +41,11 @@ Farmer.beforeCreate(async (user, options) => {
     }
   });
 
-Farmer.prototype.isCorrectPassword = async function(password){
-    console.log('verifying password...');
-    return bcrypt.compare(password, user.password);
+// Farmer.prototype.isCorrectPassword = async function(password){
+//     console.log('verifying password...');
+//     return bcrypt.compare(password, user.password);
 
-}
+// }
 
 module.exports = Farmer;
 

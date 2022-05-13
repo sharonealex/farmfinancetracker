@@ -10,7 +10,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import SignUp from './pages/SignUp'
 import Login from './pages/Login';
-import Test from './pages/Test'
+import Clockhours from './pages/Clockhours'
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,8 +20,8 @@ root.render(
      <BrowserRouter>
       <Routes>
       <Route path="/" element={<App />} />
-      <Route path="test" element={<Test />} />
       <Route path="signup" element={<SignUp />} />
+      <Route path="/clockHours" element={<Clockhours/>} />
      
       
     </Routes>
