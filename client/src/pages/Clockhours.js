@@ -1,26 +1,39 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-//mport { clockHours } from '../utils/api';
+import ClockMessage from './ClockMessage'
+import { saveHours } from '../utils/api';
+import Auth from '../utils/auth';
+
 
 const ClockHours = () => {
 
   const date = new Date();
+  
 
-  const [startTime, setStartTime] = useState("00:00");
-  const [finishTime, setFinishTime] = useState("00:00");
+  const [startTime, setStartTime] = useState(date.getHours().toString());
+  const [finishTime, setFinishTime] = useState(date.getHours().toString());
   const [startMessage, setStartMessage] = useState("");
   const [finishMessage, setFinishMessage] = useState("");
+  const [disableButtonIn, setdisableButtonIn] = useState(false);
+  const [disableButtonOut, setdisableButtonOut] = useState(false);
 
-  const handleClickIn = ()=>{
-    setStartTime(date.getHours().toString());
+
+  const handleClickIn = (event)=>{
+    event.preventDefault();
+    event.stopPropagation() 
+    setdisableButtonIn(true)
     console.log(`starting hours: ${startTime}`);
     setStartMessage(`you have clocked in at ${startTime}:00 hours, Thank you!`)
+    saveHours(Auth.getProfile(),startTime);
   };
 
-  const handleClickOut = ()=>{
-    setFinishTime(date.getHours().toString());
+  const handleClickOut = (event)=>{
+    event.preventDefault();
+    event.stopPropagation() 
+    setdisableButtonOut(true)
     console.log(`finishing hours: ${finishTime}`);
     setFinishMessage(`you have clocked out at ${finishTime}:00 hours, Thank you!`)
+    saveHours(Auth.getProfile(),finishTime)
   }
 
   return (
@@ -40,17 +53,16 @@ const ClockHours = () => {
               ":" +
               date.getMinutes()}
           </p>
-          <div className="usr-img"></div>
-          <div className="flex-row">
-          <button className="btn btn-lg btn-dark m-2" onClick={handleClickIn}>
-            Clock In
-          </button>
-          <p>{startMessage}</p>
-          <button className="btn btn-lg btn-dark m-2" onClick={handleClickOut}>
-            Clock Out
-          </button>
-          <p>{finishMessage}</p>
-          </div>
+         <ClockMessage
+         startTime={startTime}
+         finishTime={finishTime}
+         handleClickIn={handleClickIn}
+         handleClickOut={handleClickOut}
+         startMessage={startMessage}
+         finishMessage={finishMessage}
+         disableButtonIn={disableButtonIn}
+         disableButtonOut={disableButtonIn}
+         />
         </div>
       </div>
     </main>

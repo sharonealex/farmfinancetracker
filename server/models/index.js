@@ -1,5 +1,5 @@
 const Farmer = require("./Farmer");
-const Timesheet = require("./TimeSheet");
+const Timesheet = require("./Timesheet");
 
 Farmer.hasMany(Timesheet, {
   foreignKey: "farmer_id",

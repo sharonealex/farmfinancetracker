@@ -5,11 +5,6 @@ class Timesheet extends Model{};
 
 Timesheet.init(
     {
-        id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
-        },
         startHour: {
             type: DataTypes.DATE,
             allowNull: false,
@@ -27,6 +22,11 @@ Timesheet.init(
             type: DataTypes.DATE,
             defaultValue: new Date("Jan 25 2015")
         },
+        weekSubmission: {
+            type: DataTypes.DATE,
+            defaultValue: new Date("Jan 25 2015")
+        },
+
         farmer_id: {
             type: DataTypes.INTEGER,
             references: {

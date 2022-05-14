@@ -10,9 +10,44 @@
       "password": "1234aksjkdl56"
     },
     {
-      "name": "Amiko",
+      "name": "Jane",
       "email": "Amiko@gmail.com",
       "password": "aksjkdl56"
+    },
+    {
+      "name": "John",
+      "email": "Amiko@gmail.com",
+      "password": "aksjkdl56"
+    },
+    {
+      "name": "Juno",
+      "email": "Amiko@gmail.com",
+      "password": "aksjkdl56"
+    },
+    {
+      "name": "Joly",
+      "email": "Amiko@gmail.com",
+      "password": "aksjkdl56"
+    },
+    {
+      "name": "Juliz",
+      "email": "Amiko@gmail.com",
+      "password": "aksjkdl56"
+    },
+    {
+      "name": "Leela",
+      "email": "Amiko@gmail.com",
+      "password": "aksjkdl56"
+    },{
+      "name": "Lola",
+      "email": "Amiko@gmail.com",
+      "password": "aksjkdl56"
+    },
+    {
+      "name": "farmer1",
+      "email": "farmer1@gmail.com",
+      "password": "farmer1@gmail.com"
     }
+
   ]
   

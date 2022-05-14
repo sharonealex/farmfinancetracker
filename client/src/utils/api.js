@@ -17,11 +17,13 @@ export const loginUser = (user) => {
   });
 };
 
+export const saveHours = (profile, hour)=>{
+  console.log(profile.data.email)
+  return fetch("/api/user/timesheet", {
+    method: "POST",
+    body: JSON.stringify({email: profile.data.email, time: hour}),
+    headers: {'Content-Type': 'application/json'}
+  })
+}
 
-// export const clockHours = (hour)=>{
-//   return fetch("/api/time", {
-//     method: "POST",
-//     body: JSON.stringify(hour),
-//     headers: {'Content-Type': 'application/json'}
-//   })
-// }
+
